@@ -1,4 +1,4 @@
-user std::fmt;
+use std::fmt;
 use std::fmt::{Display, Formatter, Error};
 
 enum VertDir{
@@ -78,12 +78,12 @@ impl Ball{
 }
 
 impl Display for Game{
-    fn fmt (&self, fmt: &mut Formatter)->Result<(),Error>{
+    fn fmt(&self, fmt: &mut Formatter)->Result<(), Error>{
         write!(fmt, "x");
         for _ in 0..64{write!(fmt, "-");}
         for y in  0..32{
             for x in 0..64{
-                if self.ball.x ==x && self.ball.y ==y{
+                if self.ball.x ==x as i32 && self.ball.y ==y as i32{
                     write!(fmt, "0");
                 }
                 if x == 0{write!(fmt, "|");}
@@ -92,7 +92,7 @@ impl Display for Game{
             }
             write!(fmt, "\n");
         }
-        write!(fmt, "\n");
+        write!(fmt, "\n")
     }
 }
 
